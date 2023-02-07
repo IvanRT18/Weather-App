@@ -1,41 +1,46 @@
 const btnCiudad = document.getElementById("botonCiudad");
-const nombreCiudad = document.getElementById('Nombre_Ciudad');
-const nombrePrueba = document.getElementById("ciudadPrueba");
-let Ciudad = {
-  zipcode,
-  name,
-  lat,
-  lon,
-  country,
-};
-
+const codigoPostal = document.getElementById('ZipCode');
+let Ciudad = new Object();
+let Clima = new Object();
 let key = '6f5a0adb6ab18990405d03a5020778ca';
-let datosClima;
+const nombreCiudad = document.getElementById("Ciudad_Nombre");
+const TemperaturaCiudad = document.getElementById("Temperatura_Ciudad");
+const MaximaTempCiudad = document.getElementById("Maxima_Ciudad");
+const MinimaTempCiudad = document.getElementById("Minima_Ciudad");
+const Sensacion_Clima = document.getElementById("Sensacion_Clima");
 
 btnCiudad.addEventListener('click', () =>{
-    nombrePrueba.innerText = nombreCiudad.value;
-    zipcode = nombreCiudad.value;
     solicitudDatos();
 });
 
-
-
 function solicitudDatos(){
     var xhttps = new XMLHttpRequest();
-    xhttps.open("GET", `http://api.openweathermap.org/geo/1.0/zip?zip=${zipcode},MX&appid=${key}`);
+    xhttps.open("GET", `http://api.openweathermap.org/geo/1.0/zip?zip=${codigoPostal.value},MX&appid=${key}`);
     
     xhttps.addEventListener("load", (data) => {
-      datosClima = JSON.parse(data.target.response);
+      Ciudad = JSON.parse(data.target.response);
+      obtenClima();
     });
-
-    Ciudad.zipcode = datosClima.zipcode;
-    Ciudad.name = datosClima.name;
-    Ciudad.lat = datosClima.lat;
-    Ciudad.lon = datosClima.lon;
-    Ciudad.country = datosClima.country;
-    
-    console.log(Ciudad);
 
     xhttps.send();
 }
 
+function obtenClima(){
+  var xhttpsC = new XMLHttpRequest();
+  xhttpsC.open("GET", `https://api.openweathermap.org/data/2.5/weather?lat=${Ciudad.lat}&lon=${Ciudad.lon}&appid=${key}&units=metric`);
+    
+  xhttpsC.addEventListener("load", (data) => {
+      Clima = JSON.parse(data.target.response);
+      MuestraDatosPantalla();
+    });
+
+    xhttpsC.send();
+}
+
+function MuestraDatosPantalla(){
+  nombreCiudad.innerText = `La temperatura en ${Clima.name} el dia de hoy es de: `;
+  TemperaturaCiudad.innerText = `${Clima.main.temp} °C`;
+  Sensacion_Clima.innerText = `Con una sensacion térmica de ${Clima.main.feels_like} °C`;
+  MinimaTempCiudad.innerText = `La temperatura minima es de ${Clima.main.temp_min} °C`;
+  MaximaTempCiudad.innerText = `Y la máxima es de ${Clima.main.temp_max} °C`;
+}
