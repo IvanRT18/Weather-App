@@ -24,29 +24,30 @@ $header = "header.php";
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid px-0">
 
         <!-- Navbar -->
         <?php include($header) ?>
 
         <!-- Display info -->
         <div class="container-fluid bg-dark">
+            <div class="row justify-content-center align-items-center flex-column p-4">
+                <!-- Input -->
+                <div class="display-5 text-white text-center">Clima el dia de hoy</div>
+                <div class="col d-flex justify-content-center">
+                    <div class="input-group w-25 p-3">
+                        <input id="ZipCode" type="text" class="form-control" placeholder="Escribe tu código postal" aria-label="Codigo Postal">
+                        <button id="botonCiudad" class="btn btn-light btn-outline-success" type="">Enviar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Display clima -->
             <div class="row">
                 <div class="col-6">
                     <img src="https://cdn-icons-png.flaticon.com/512/1163/1163661.png" alt="" width="200" height="200">
                 </div>
                 <div class="col-6">
-                    <!-- Input -->
-                    <div class="display-5 text-white">Clima el dia de hoy</div>
-                    <div class="row">
-                        <div class="input-group bg-danger">
-                            <div class="col">
-                                <input id="ZipCode" type="text" class="form-control" placeholder="Escribe tu código postal" aria-label="Codigo Postal">
-                                <button id="botonCiudad" class="btn btn-light btn-outline-success" type="">Enviar</button>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Carta de clima -->
                     <div class="card">
                         <div class="row g-0">
@@ -58,9 +59,9 @@ $header = "header.php";
                                     <h5 class="card-title" id="Ciudad_Nombre"></h5>
                                     <p class="card-text" id="Temperatura_Ciudad"></p>
                                     <p class="card-text" id="Sensacion_Clima"></p>
-                                    <p class="card-text" id ="Maxima_Ciudad"></p>
-                                    <p class="card-text" id ="Minima_Ciudad"></p>
-                                    <p class="card-text" id ="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="card-text" id="Maxima_Ciudad"></p>
+                                    <p class="card-text" id="Minima_Ciudad"></p>
+                                    <p class="card-text" id="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                 </div>
                             </div>
                         </div>
