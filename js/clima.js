@@ -8,6 +8,7 @@ const TemperaturaCiudad = document.getElementById("Temperatura_Ciudad");
 const MaximaTempCiudad = document.getElementById("Maxima_Ciudad");
 const MinimaTempCiudad = document.getElementById("Minima_Ciudad");
 const Sensacion_Clima = document.getElementById("Sensacion_Clima");
+const iconoClima = document.getElementById("Icono_Clima");
 
 btnCiudad.addEventListener('click', () =>{
     solicitudDatos();
@@ -38,9 +39,11 @@ function obtenClima(){
 }
 
 function MuestraDatosPantalla(){
-  nombreCiudad.innerText = `La temperatura en ${Clima.name} el dia de hoy es de: `;
+  nombreCiudad.innerText = `${Clima.name}, ${Clima.sys.country}`;
   TemperaturaCiudad.innerText = `${Clima.main.temp} °C`;
   Sensacion_Clima.innerText = `Con una sensacion térmica de ${Clima.main.feels_like} °C`;
-  MinimaTempCiudad.innerText = `La temperatura minima es de ${Clima.main.temp_min} °C`;
-  MaximaTempCiudad.innerText = `Y la máxima es de ${Clima.main.temp_max} °C`;
+  // MinimaTempCiudad.innerText = `La temperatura minima es de ${Clima.main.temp_min} °C`;
+  // MaximaTempCiudad.innerText = `Y la máxima es de ${Clima.main.temp_max} °C`;
+  stringClima = `http://openweathermap.org/img/wn/${Clima.weather[0].icon}@2x.png`
+  iconoClima.setAttribute("src", stringClima);
 }

@@ -23,14 +23,14 @@ $header = "header.php";
     <title>Ivan's weather app</title>
 </head>
 
-<body>
-    <div class="container-fluid px-0">
+<body class="bg-dark">
+    <div class="container-fluid px-0 bg-dark">
 
         <!-- Navbar -->
         <?php include($header) ?>
 
         <!-- Display info -->
-        <div class="container-fluid bg-dark">
+        <div class="container-fluid">
             <div class="row justify-content-center align-items-center flex-column p-4">
                 <!-- Input -->
                 <div class="display-5 text-white text-center">Clima el dia de hoy</div>
@@ -44,24 +44,24 @@ $header = "header.php";
 
             <!-- Display clima -->
             <div class="row">
-                <div class="col-6">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1163/1163661.png" alt="" width="200" height="200">
-                </div>
-                <div class="col-6">
+                <div class="col d-flex justify-content-center">
                     <!-- Carta de clima -->
-                    <div class="card">
+                    <div class="card w-50">
                         <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="" class="img-fluid rounded-start" alt="...">
-                            </div>
+                            <!-- <div class="col-md-4">
+                                <img src=""  alt="ClimaIcono" id="Icono_Clima">K
+                            </div> -->
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title" id="Ciudad_Nombre"></h5>
-                                    <p class="card-text" id="Temperatura_Ciudad"></p>
-                                    <p class="card-text" id="Sensacion_Clima"></p>
-                                    <p class="card-text" id="Maxima_Ciudad"></p>
+                                    <h5 class="card-title display-6" id="Ciudad_Nombre"></h5>
+                                    <div class="d-flex align-items-center">
+                                    <img src="" alt="ClimaIcono" id="Icono_Clima">
+                                    <span class="card-text display-6" id="Temperatura_Ciudad"></span>
+                                    </div>
+                                    <p class="card-text fs-3" id="Sensacion_Clima"></p>
+                                    <!-- <p class="card-text" id="Maxima_Ciudad"></p>
                                     <p class="card-text" id="Minima_Ciudad"></p>
-                                    <p class="card-text" id="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="card-text" id="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
                                 </div>
                             </div>
                         </div>
@@ -69,11 +69,16 @@ $header = "header.php";
                 </div>
             </div>
         </div>
-
     </div>
 
 
     <script src="js/clima.js"></script>
 </body>
+<footer class="bg-dark" style="margin-top: 150px;">
+    <p class="text-center text-white fs-5">Made by Iván Rodríguez</p>
+    <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-lg btn-dark"><i class="fa-brands fa-github"></i></button>
+    </div>
+</footer>
 
 </html>
