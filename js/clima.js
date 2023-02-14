@@ -9,8 +9,10 @@ const MaximaTempCiudad = document.getElementById("Maxima_Ciudad");
 const MinimaTempCiudad = document.getElementById("Minima_Ciudad");
 const Sensacion_Clima = document.getElementById("Sensacion_Clima");
 const iconoClima = document.getElementById("Icono_Clima");
+const Clima_Display = document.getElementById("Clima_Display");
 
 btnCiudad.addEventListener('click', () =>{
+  Clima_Display.style.display = 'inline';
     solicitudDatos();
 });
 
